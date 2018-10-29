@@ -1,0 +1,2 @@
+http://xx.xx.xx.xx:80
+http://xx.xx.xx.xx:8088
