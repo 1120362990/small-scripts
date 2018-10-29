@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#这个脚本比较特殊，因为360的域名不统一，匹配的是  http://------.com   之间的东西，之后再加上.com
 import requests
 import re
 import os
