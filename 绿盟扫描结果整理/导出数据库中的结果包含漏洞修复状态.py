@@ -11,19 +11,20 @@ def benyuejieguo(Main_DB,tablename):
     worksheet1 = workbook.add_sheet('各系统本月漏洞详情')
 
     #sheet各系统漏洞概要 表头
-    worksheet0.write(0,0,'本月漏洞发现情况')
-    worksheet0.write(1,0,'科室')
-    worksheet0.write(1,1,'负责人')
-    worksheet0.write(1,2,'系统')
-    worksheet0.write(1,3,'公网or内网')
-    worksheet0.write(1,4,'高危漏洞')
-    worksheet0.write(1,7,'中危漏洞')
-    worksheet0.write(1, 10, '问题IP数量')
+    #合并所需的单元格，并写入默认数据
+    worksheet0.write_merge(0, 0, 0, 10,tablename+'漏洞新发现情况')#  上 下 左 右  写入的内容
+    worksheet0.write_merge(1, 2, 0, 0,'科室')
+    worksheet0.write_merge(1, 2, 1, 1,'负责人')
+    worksheet0.write_merge(1, 2, 2, 2,'系统')
+    worksheet0.write_merge(1, 2, 3, 3,'公网or内网')
+    worksheet0.write_merge(1,1, 4, 6,'高危漏洞')
+    worksheet0.write_merge(1, 1, 7, 9,'中危漏洞')
+    worksheet0.write_merge(1, 2, 10, 10,'问题IP数量')
     worksheet0.write(2, 4, '共发现')
-    worksheet0.write(2, 5, '新发现')
+    worksheet0.write(2, 5, '已修复')
     worksheet0.write(2, 6, '未修复')
     worksheet0.write(2, 7, '共发现')
-    worksheet0.write(2, 8, '新发现')
+    worksheet0.write(2, 8, '已修复')
     worksheet0.write(2, 9, '未修复')
 
     #sheet各系统漏洞详情 表头
@@ -116,7 +117,7 @@ def benyuejieguo(Main_DB,tablename):
         worksheet1.write(x+1,14,xx[14])
         x = x + 1
 
-    workbook.save('本月漏洞情况统计'+'.xls')
+    workbook.save(tablename+'漏洞新发现情况统计'+'.xls')
     print('统计表创建成功')
 
 
@@ -127,14 +128,15 @@ def shangyueqingkuang(Main_DB,tablename):
     worksheet1 = workbook.add_sheet('各系统上月漏洞修复详情')
 
     #sheet各系统漏洞概要 表头
-    worksheet0.write(0,0,'上月漏洞修复情况')
-    worksheet0.write(1,0,'科室')
-    worksheet0.write(1,1,'负责人')
-    worksheet0.write(1,2,'系统')
-    worksheet0.write(1,3,'公网or内网')
-    worksheet0.write(1,4,'高危漏洞')
-    worksheet0.write(1,7,'中危漏洞')
-    worksheet0.write(1, 10, '问题IP数量')
+    #合并所需的单元格，并写入默认数据
+    worksheet0.write_merge(0, 0, 0, 10,tablename+'漏洞修复情况')#  上 下 左 右  写入的内容
+    worksheet0.write_merge(1, 2, 0, 0,'科室')
+    worksheet0.write_merge(1, 2, 1, 1,'负责人')
+    worksheet0.write_merge(1, 2, 2, 2,'系统')
+    worksheet0.write_merge(1, 2, 3, 3,'公网or内网')
+    worksheet0.write_merge(1,1, 4, 6,'高危漏洞')
+    worksheet0.write_merge(1, 1, 7, 9,'中危漏洞')
+    worksheet0.write_merge(1, 2, 10, 10,'问题IP数量')
     worksheet0.write(2, 4, '共发现')
     worksheet0.write(2, 5, '已修复')
     worksheet0.write(2, 6, '未修复')
@@ -231,12 +233,13 @@ def shangyueqingkuang(Main_DB,tablename):
         worksheet1.write(x+1,14,xx[14])
         x = x + 1
 
-    workbook.save('上月漏洞修复情况统计'+'.xls')
+    
+    workbook.save(tablename+'漏洞修复情况统计'+'.xls')
     print('统计表创建成功')
 
 if __name__ == "__main__":
     #视后续脚本编写进度，考虑是否把xls操作放进主函数里
-    benyuejieguo('E:\\python\\xxxx.db',"漏洞库-181023")#两个参数依次是： 数据库  想要导出结果的数据表-本月新扫描出的结果，对比后的      导出本月结果
-    #shangyueqingkuang('E:\\python\\xxxx.db',"漏洞库-181009")#两个参数依次是： 数据库  想要导出结果的数据表-上月结果，对比后的      导出上月漏洞修复情况
+    benyuejieguo('E:\\python\\归属查询\\hulianwang.db',"月度漏洞库-181023-公网及内网")#两个参数依次是： 数据库  想要导出结果的数据表-本月新扫描出的结果，对比后的      导出本月结果
+    #shangyueqingkuang('E:\\python\\归属查询\\hulianwang.db',"月度漏洞库-181023-公网及内网")#两个参数依次是： 数据库  想要导出结果的数据表-上月结果，对比后的      导出上月漏洞修复情况
 
     
