@@ -96,4 +96,4 @@ def loudongdaochu_jichu(db_name,table_name):
     print('统计表创建成功')
 
 if __name__ == "__main__":
-    loudongdaochu_jichu('E:/文件库/工作/181023/xxxx.db','7yue')
+    loudongdaochu_jichu('E:/python/归属查询/hulianwang.db','月度漏洞库-181217-公网')

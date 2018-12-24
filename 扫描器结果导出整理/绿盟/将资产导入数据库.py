@@ -65,9 +65,9 @@ def zichandaoru_xitong(DB,xls,tables):
 
 if __name__ == "__main__":
 	#用来向正常的漏洞库中导入数据
-    zichandaoru_changgui('E:/python/xxxx.db',"E:\\python\\181019.xls",'资产表-1804')
+    zichandaoru_changgui('E:/python/归属查询/hulianwang.db',"E:\\python\\新版绿盟漏洞统计脚本-sqlite\\181221互联网资产更新.xlsx",'资产表-181221')
 	#三个参数，依次是   数据库位置   要写入数据库的xls,数据要放在"Sheet1"中   要写入的数据表
 
 
 	#用来向统计系统中导入数据
-	#zichandaoru_xitong('E:/python/db.sqlite3',"E:\\python\\公网IP地址明细.xls",'message_zichanxinxi')
+	#zichandaoru_xitong('E:/python/DjangoMoon/db.sqlite3',"E:\\python\\新版绿盟漏洞统计脚本-sqlite\\公网IP地址明细.xls",'message_zichanxinxi')

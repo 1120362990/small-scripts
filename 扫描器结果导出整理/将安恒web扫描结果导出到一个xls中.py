@@ -61,6 +61,7 @@ def file_name(file_dir):
 
 if __name__ == "__main__":
     binalishuchu_anheng()#这个位置放文件夹吧
+	
     #lm_web_loudongdaoru('http___4.2.134.22_2323_cscf_102_client_%23.xls')
 
 
