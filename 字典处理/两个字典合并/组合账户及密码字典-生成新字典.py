@@ -4,15 +4,12 @@
 
 
 def main(user,passwd):
-    print(user,passwd)
     users = open("user.txt","r")
-    passwds = open("passwd.txt","r")
     for user in users:
+        passwds = open("passwd.txt", "r")
         for passwd in passwds:
             print(user.strip()+':'+passwd.strip())
-            result.write(user.strip()+':'+passwd.strip()+'\n')
-    users.close()
-    passwds.close()
+            result.write(user.strip()+passwd.strip()+'\n')
 
 
 if __name__ == '__main__':

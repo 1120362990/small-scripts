@@ -5,9 +5,6 @@ import time
 #移除报错
 requests.packages.urllib3.disable_warnings()
 
-
-
-#https  ------------------------get
 daunxintiaoshu = 36
 i = 0
 while i < daunxintiaoshu:
