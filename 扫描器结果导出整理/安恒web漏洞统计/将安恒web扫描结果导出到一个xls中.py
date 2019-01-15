@@ -55,13 +55,12 @@ def lm_web_loudongdaoru(xls_name):
         x=x+1
 
 #获取指定文件夹下的文件名称
-def file_name(file_dir):   
+def file_name(file_dir):
     for root, dirs, files in os.walk(file_dir):
         return(files)
 
 if __name__ == "__main__":
     binalishuchu_anheng()#这个位置放文件夹吧
-	
     #lm_web_loudongdaoru('http___4.2.134.22_2323_cscf_102_client_%23.xls')
 
 

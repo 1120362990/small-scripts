@@ -105,9 +105,9 @@ def wubaochuli(Main_DB,wubaoloudong,newtable):#三个参数依次是： 数据�
     conn.close()
 
 if __name__ == "__main__":
-    #mainjiubiaochuli('E:\\python\\归属查询\\hulianwang.db',"月度漏洞库-181023-公网及内网","月度漏洞库-181129-公网及内网")#三个参数依次是： 数据库  旧的漏洞统计表  新的漏洞统计表
-    #mainxinbiaochuli('E:\\python\\归属查询\\hulianwang.db',"月度漏洞库-181129-公网及内网","临时漏洞库-181206-省公司漏洞扫描复测")#三个参数依次是： 数据库  旧的漏洞统计表  新的漏洞统计表
-    wubaochuli('E:/python/数据库备份/beifenshujuku.db','互联网中心误报漏洞库-181224','月度漏洞库-181129-公网及内网') #三个参数依次是： 数据库  误报漏洞统计表  漏洞修复状态统计表
+    #mainjiubiaochuli('E:\\python\\归属查询\\hulianwang.db',"月度漏洞库-181129-公网及内网","月度漏洞库-181229-公网及内网")#三个参数依次是： 数据库  旧的漏洞统计表  新的漏洞统计表
+    #mainxinbiaochuli('E:\\python\\归属查询\\hulianwang.db',"月度漏洞库-181129-公网及内网","月度漏洞库-181229-公网及内网")#三个参数依次是： 数据库  旧的漏洞统计表  新的漏洞统计表
+    wubaochuli('E:\\python\\归属查询\\hulianwang.db','互联网中心误报漏洞库-181224','周常漏洞库-190107-公网及内网') #三个参数依次是： 数据库  误报漏洞统计表  漏洞修复状态统计表
 
 
 

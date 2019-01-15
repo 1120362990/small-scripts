@@ -34,6 +34,8 @@ def loudongdaochu_jichu(db_name,table_name):
     worksheet1.write(0,11,'CVE编号')
     worksheet1.write(0,12,'详细描述')
     worksheet1.write(0,13,'解决办法')
+    worksheet1.write(0,14,'返回信息')
+    worksheet1.write(0,15,'修复情况')
 
     #设置sqlite数据库
     conn = sqlite3.connect(db_name)
@@ -75,7 +77,7 @@ def loudongdaochu_jichu(db_name,table_name):
     while x < len(m):
         # print(len(m))
         # print(m[x][0])
-        cursor.execute("SELECT ID,科室,业务系统,公网or内网,负责人,IP地址,端口,协议,服务,漏洞名称,风险等级,CVE编号,详细描述,解决办法 FROM %s WHERE ID = %s" % (biao,m[x][0]));
+        cursor.execute("SELECT ID,科室,业务系统,公网or内网,负责人,IP地址,端口,协议,服务,漏洞名称,风险等级,CVE编号,详细描述,解决办法,返回信息,修复情况 FROM %s WHERE ID = %s" % (biao,m[x][0]));
         xx = cursor.fetchone()
         worksheet1.write(x+1,0,x)
         worksheet1.write(x+1,1,xx[1])
@@ -91,10 +93,12 @@ def loudongdaochu_jichu(db_name,table_name):
         worksheet1.write(x+1,11,xx[11])
         worksheet1.write(x+1,12,xx[12])
         worksheet1.write(x+1,13,xx[13])
+        worksheet1.write(x+1,14,xx[14])
+        worksheet1.write(x+1,15,xx[15])
         x = x + 1
 
     workbook.save(table_name+'.xls')
     print('统计表创建成功')
 
 if __name__ == "__main__":
-    loudongdaochu_jichu('E:/python/归属查询/hulianwang.db','月度漏洞库-181129-公网及内网')
+    loudongdaochu_jichu('C:/个人文件/工作/数据库备份-数据资料备份/190114-hulianwang.db','周常漏洞库-190113-公网')

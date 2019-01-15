@@ -75,19 +75,19 @@ def benyuejieguo(Main_DB,tablename):
         gongneiwang = '\''+a[p][3]+'\''   #公网or内网
         #print(xitong)
         #打印高危漏洞数目
-        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[高]' AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
+        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[高]' AND 修复情况!='误报'AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
         gaowei = cursor.fetchall()#获取高危漏洞
-        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[中]' AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
+        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[中]' AND 修复情况!='误报'AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
         zhongwei = cursor.fetchall()#获取中危漏洞
-        cursor.execute("SELECT distinct IP地址 FROM %s WHERE 业务系统=%s AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
+        cursor.execute("SELECT distinct IP地址 FROM %s WHERE 业务系统=%s AND 修复情况!='误报'AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
         ipshuliang = cursor.fetchall()#获取存在漏洞的IP
-        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[中]' AND 修复情况='新发现' AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
+        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[中]' AND 修复情况='新发现' AND 修复情况!='误报'AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
         xinfaxian_zhong_IP= cursor.fetchall()#获取该系统新发现的中危漏洞
-        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[中]' AND 修复情况='未修复' AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
+        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[中]' AND 修复情况='未修复' AND 修复情况!='误报'AND 公网or内网 =%s" % (biao,xitong,gongneiwang));
         weixiufu_zhong_IP = cursor.fetchall()#获取该系统未修复的中危漏洞
-        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[高]' AND 修复情况='新发现' AND 公网or内网 =%s" % (biao, xitong,gongneiwang));
+        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[高]' AND 修复情况='新发现' AND 修复情况!='误报'AND 公网or内网 =%s" % (biao, xitong,gongneiwang));
         xinfaxian_gao_IP = cursor.fetchall()  # 获取该系统新发现的高危漏洞
-        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[高]' AND 修复情况='未修复' AND 公网or内网 =%s" % (biao, xitong,gongneiwang));
+        cursor.execute("SELECT IP地址 FROM %s WHERE 业务系统=%s AND 风险等级='[高]' AND 修复情况='未修复' AND 修复情况!='误报' AND 公网or内网 =%s" % (biao, xitong,gongneiwang));
         weixiufu_gao_IP = cursor.fetchall()  # 获取该系统未修复的高危漏洞
 
 
@@ -255,6 +255,6 @@ def shangyueqingkuang(Main_DB,tablename):
 
 if __name__ == "__main__":
     #视后续脚本编写进度，考虑是否把xls操作放进主函数里
-    #benyuejieguo('E:\\python\\归属查询\\hulianwang.db',"临时漏洞库-181206-省公司漏洞扫描复测")#两个参数依次是： 数据库  想要导出结果的数据表-本月新扫描出的结果，对比后的      导出本月结果
-    shangyueqingkuang('E:\\python\\归属查询\\hulianwang.db',"月度漏洞库-181129-公网及内网")#两个参数依次是： 数据库  想要导出结果的数据表-上月结果，对比后的      导出上月漏洞修复情况
+    benyuejieguo('C:/个人文件/工作/数据库备份-数据资料备份/190114-hulianwang.db',"月度漏洞库-181229-公网及内网")#两个参数依次是： 数据库  想要导出结果的数据表-本月新扫描出的结果，对比后的      导出本月结果
+    # shangyueqingkuang('C:/个人文件/工作/数据库备份-数据资料备份/190114-hulianwang.db',"月度漏洞库-181229-公网及内网")#两个参数依次是： 数据库  想要导出结果的数据表-上月结果，对比后的      导出上月漏洞修复情况
 

@@ -29,7 +29,7 @@ def loudong_xieru(xls_name,db_table_name,zichan,sheet=r'漏洞信息'):  #xls_na
 	global duankou
 	global xieyi
 	global fuuw
-	
+
 	if lieshu_xls(xls_name,sheet) == 14:#写入便携式扫描器的报告
 		print('扫描报告类型：bianixe')
 		workbook = xlrd.open_workbook(xls_name+".xls","r")    #打开excel文件
@@ -286,7 +286,7 @@ def main(DB,xls_dir,yaoxierudebiao,zichan):
 
 
 if __name__ == "__main__":
-	main('E:/python/归属查询/hulianwang.db','E:\python\新版绿盟漏洞统计脚本-sqlite\月度漏洞库-181217-公网','\'' + '月度漏洞库-181217-公网' + '\'','\'' + '资产表-181120' + '\'')
+	main('C:/个人文件/工作/hulianwang.db',r'C:\个人文件\工作\数据库备份-数据资料备份\导入的漏洞\周常漏洞库-190114','\'' + '周常漏洞库-190114' + '\'','\'' + '资产表-181221' + '\'')
 	#需要已写入四个参数：漏洞数据库文件  要写入的xls文件  漏洞库表  资产表
 
 
