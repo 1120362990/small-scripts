@@ -4,20 +4,20 @@ import xlwt
 import os
 
 #将某文件夹下的安恒xls报告中的信息输出到一个XLS中
-def binalishuchu_anheng():
+def binalishuchu_anheng(file_dir):  #将要导入的文件发在这个文件夹下 file_dir
     XX =1
     workbook_jieguo = xlwt.Workbook(encoding = 'utf-8')
     worksheet0 = workbook_jieguo.add_sheet('漏洞概要')
     #获取所有扫描结果文件名
-    file_dir = 'E:\python\新版绿盟漏洞统计脚本-sqlite\web_anheng'    #将要导入的文件发在这个文件夹下
+    file_dir = file_dir  #获取存放w安恒web结果的xls
     files = file_name(file_dir)
     worksheet0.write(0,0,'文件路径')            #向xls中写入结果
     worksheet0.write(0,1,'漏洞名称')
-    worksheet0.write(0,2,'漏洞名称')
+    worksheet0.write(0,2,'漏洞地址')
     worksheet0.write(0,3,'漏洞信息')
     worksheet0.write(0,4,'风险等级')
     for file in files:
-        xls_name = 'E:\python\新版绿盟漏洞统计脚本-sqlite\web_anheng\\'+file
+        xls_name = file_dir+'\\'+file  #获取文件夹中的文件
         workbook = xlrd.open_workbook(xls_name, "r")
         sheet = workbook.sheet_by_name(u'Sheet0')
         x = 169   #从169行开始遍历漏洞
@@ -60,7 +60,7 @@ def file_name(file_dir):
         return(files)
 
 if __name__ == "__main__":
-    binalishuchu_anheng()#这个位置放文件夹吧
+    binalishuchu_anheng('web_anheng')#file_dir   是存放安恒扫描报告的文件夹
     #lm_web_loudongdaoru('http___4.2.134.22_2323_cscf_102_client_%23.xls')
 
 
