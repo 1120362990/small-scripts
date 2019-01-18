@@ -22,6 +22,10 @@ class RedisUN(threading.Thread):
 						print(url +'	'+str(response))
 						f2.write('\n'+url +'	'+str(response))
 						continue
+					else:
+						print(url +'	'+str(response))
+						f2.write('\n'+url +'	'+str(response))
+						continue
 				except:
 					print(url +'	'+'Time out or some Error!')
 					f2.write('\n'+url +'	'+'Time out or some Error!')
@@ -54,7 +58,7 @@ class RedisUN(threading.Thread):
 def main():
 	global f2
 	f2 = open('test.txt','w+')
-	xujiancedeURL = open(r"C:\个人文件\mgc\网站存活性测试\daijianURL.txt","r") #读取所要检测的url列表。就是提供给核心代码区域的参数
+	xujiancedeURL = open(r"C:\个人文件\GitHub\small-scripts\网站存活性测试\daijianURL.txt","r") #读取所要检测的url列表。就是提供给核心代码区域的参数
 	thread_count = 1000  #线程数
 	threads = []
 	queue1 = queue.Queue()
