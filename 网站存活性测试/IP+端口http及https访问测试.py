@@ -2,8 +2,9 @@
 import threading,queue,sys
 import requests
 import xlwt
+import urllib3
 #移除报错
-requests.packages.urllib3.disable_warnings()
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 class LiveTest(threading.Thread):
 	def __init__(self,queue1):
 		threading.Thread.__init__(self)
@@ -20,8 +21,8 @@ class LiveTest(threading.Thread):
 					response = requests.get(url,headers=headers,timeout=15,verify=False).status_code
 					self.OutPut(url,str(response))
 					continue
-				except:
-					self.OutPut(url,'Time out or some Error!')
+				except Exception as e:
+					self.OutPut(url,f'Error1: {str(e)}')
 					continue
 			else:
 				try:
@@ -35,11 +36,11 @@ class LiveTest(threading.Thread):
 						response = requests.get(url2,headers=headers,timeout=15,verify=False).status_code
 						self.OutPut(url2,str(response))
 						continue
-					except:
-						self.OutPut(url,'Time out or some Error!')
+					except Exception as e:
+						self.OutPut(url,f'Error2: {str(e)}')
 						continue
 				except Exception as e:
-					self.OutPut(url,'There some special Error!: '+e)
+					self.OutPut(url,f'Error3: {str(e)}')
 					continue
 	def OutPut(self,url,stat):
 		lock.acquire()
@@ -48,7 +49,7 @@ class LiveTest(threading.Thread):
 		lock.release()
 
 def main(filepath):
-	global f2,lock,worksheet,Url_stat
+	global lock,worksheet,Url_stat
 	Url_stat =[]#用来存放访问结果，最后存入xls
 	workbook = xlwt.Workbook(encoding = 'utf-8')
 	worksheet = workbook.add_sheet('UrlStat')
@@ -74,7 +75,6 @@ def main(filepath):
 		worksheet.write(x,0, label = Url_stat[x-1][0])
 		worksheet.write(x,1, label = Url_stat[x-1][1])
 	workbook.save('Result.xls')
-	print(Url_stat)
 
 if __name__ == '__main__':
-	main(r"C:\个人文件\梦工厂\daijianURL.txt")
+	main(r"D:\daijianURL.txt")
