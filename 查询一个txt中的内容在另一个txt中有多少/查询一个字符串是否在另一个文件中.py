@@ -19,7 +19,12 @@ def str_search(target_txt, assets_txt):
 
     for target in targets:
         if target in assets:
+            pass
+            # 输出两个txt共有的
             print(target)
+        # else:
+            # 输出不是两个txt共有的
+            # print(target)
 
 
 if __name__ == "__main__":
