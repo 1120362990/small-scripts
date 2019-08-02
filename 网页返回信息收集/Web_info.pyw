@@ -5,6 +5,8 @@ from threading import Thread
 from bs4 import BeautifulSoup
 import queue,threading
 import xlwt
+requests.packages.urllib3.disable_warnings()
+requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 lock = threading.Lock()
