@@ -7,7 +7,6 @@ import urllib3
 
 # 移除报错
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-# 处理 dh key too small 报错
 requests.packages.urllib3.disable_warnings()
 requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
 
@@ -22,22 +21,22 @@ class LiveTest(threading.Thread):
             if self._queue.empty():
                 break
             # 实际工作的代码区域
-            headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"}
+            headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36', 'Connection': 'close'}
             url = self._queue.get(timeout=0.5)
             if url[:4] == 'http':
                 try:
-                    response = requests.get(url, headers=headers, timeout=15, verify=False).status_code
+                    response = requests.get(url, headers=headers, timeout=60, verify=False).status_code
                     if response == 400:
                         try:
                             url1 = 'https://'+url
-                            response = requests.get(url1, headers=headers, timeout=15, verify=False).status_code
+                            response = requests.get(url1, headers=headers, timeout=60, verify=False).status_code
                             self.OutPut(url1, str(response))
                             continue
                         except Exception as e:
                             self.OutPut(url, f'Error2: {str(e)}')
                             continue
                     else:
-                        self.OutPut(url1, str(response))
+                        self.OutPut(url, str(response))
                     continue
                 except Exception as e:
                     self.OutPut(url, f'Error1: {str(e)}')
@@ -45,11 +44,11 @@ class LiveTest(threading.Thread):
             else:
                 try:
                     url1 = 'http://'+url
-                    response = requests.get(url1, headers=headers, timeout=15, verify=False).status_code
+                    response = requests.get(url1, headers=headers, timeout=60, verify=False).status_code
                     if response == 400:
                         try:
                             url1 = 'https://'+url
-                            response = requests.get(url1, headers=headers, timeout=15, verify=False).status_code
+                            response = requests.get(url1, headers=headers, timeout=60, verify=False).status_code
                             self.OutPut(url1, str(response))
                             continue
                         except Exception as e:
@@ -61,7 +60,7 @@ class LiveTest(threading.Thread):
                 except requests.exceptions.ConnectionError:
                     try:
                         url2 = 'https://'+url
-                        response = requests.get(url2, headers=headers, timeout=15, verify=False).status_code
+                        response = requests.get(url2, headers=headers, timeout=60, verify=False).status_code
                         self.OutPut(url2, str(response))
                         continue
                     except Exception as e:
