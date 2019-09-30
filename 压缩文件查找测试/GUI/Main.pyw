@@ -79,7 +79,7 @@ class FindbakFrame(Frame): # 继承Frame类
             def findbak_zhu_catlog(url_f):
                 url = url_f
                 suffixList = ['.rar', '.zip', '.sql', '.gz', '.tar', '.bz2', '.tar.gz', '.bak', '.dat']
-                keyList = ['install', 'INSTALL', 'index', 'INDEX', 'ezweb', 'EZWEB', 'flashfxp', 'FLASHFXP', '111', '1','upload']
+                keyList = ['install', 'INSTALL', 'index', 'INDEX', 'ezweb', 'EZWEB', 'flashfxp', 'FLASHFXP', '111', '1','upload','data']
                 if (url[:5] == 'http:'):
                     url = url[7:].strip()
                 if (url[:6] == 'https:'):
