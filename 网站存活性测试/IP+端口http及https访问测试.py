@@ -84,7 +84,7 @@ def main(filepath):
     worksheet = workbook.add_sheet('UrlStat')
     worksheet.write(0, 0, label='Url')
     worksheet.write(0, 1, label='Stat')
-    xujiancedeURL = open(filepath, "r")  # 读取所要检测的url列表。就是提供给核心代码区域的参数
+    xujiancedeURL = open(filepath, 'r', encoding='utf-8')  # 读取所要检测的url列表。就是提供给核心代码区域的参数
     thread_count = 1000  # 线程数
     threads = []
     queue1 = queue.Queue()
