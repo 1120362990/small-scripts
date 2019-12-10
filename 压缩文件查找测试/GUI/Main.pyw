@@ -38,13 +38,7 @@ class FindbakFrame(Frame): # 继承Frame类
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             jcgc.insert('1.0', '开始检测。' + "\n")
             def findbak_ciji_catlog_urls(urlsx):
-                suffixs = (
-                    '.001', '.002', '.1', '.2', '.7z', '.arj', '.back', '.backup', '.bak',
-                    '.bakup', '.bas', '.bz2', '.c', '.cab', '.conf', '.copia', '.core', '.cpp',
-                    '.dat', '.db', '.default', '.dll', '.doc', '.gz', '.ini', '.jar', '.java',
-                    '.metalink', '.old', '.orig', '.pas', '.rar', '.sav', '.saved', '.source',
-                    '.src', '.stackdump', '.tar', '.tar.gz', '.tar.gz.metalink', '.temp',
-                    '.test', '.tgz', '.tmp', '.txt', '.war', '.Z', '.zip')
+                suffixs = ('.001', '.002', '.1', '.2', '.7z', '.arj', '.back', '.backup', '.bak', '.bas', '.bz2', '.c', '.cab', '.conf', '.copia', '.core', '.cpp','.dat', '.db', '.default', '.dll', '.doc', '.gz', '.ini', '.jar', '.java','.metalink', '.old', '.orig', '.pas', '.rar', '.sav', '.saved', '.source','.src', '.stackdump',  '.tar.gz', '.tar.gz.metalink', '.temp','.test', '.tgz', '.tmp', '.txt', '.war', '.Z', '.zip','.sql',  '.tar')
                 for urls in urlsx:
                     for suffix in suffixs:
                         url = urls + suffix
@@ -78,8 +72,8 @@ class FindbakFrame(Frame): # 继承Frame类
             # 根据域名生成主目录爆破文件名，并进行爆破
             def findbak_zhu_catlog(url_f):
                 url = url_f
-                suffixList = ['.rar', '.zip', '.sql', '.gz', '.tar', '.bz2', '.tar.gz', '.bak', '.dat']
-                keyList = ['install', 'INSTALL', 'index', 'INDEX', 'ezweb', 'EZWEB', 'flashfxp', 'FLASHFXP', '111', '1','upload','data']
+                suffixList = ['.001', '.002', '.1', '.2', '.7z', '.arj', '.back', '.backup', '.bak', '.bas', '.bz2', '.c', '.cab', '.conf', '.copia', '.core', '.cpp','.dat', '.db', '.default', '.dll', '.doc', '.gz', '.ini', '.jar', '.java','.metalink', '.old', '.orig', '.pas', '.rar', '.sav', '.saved', '.source','.src', '.stackdump',  '.tar.gz', '.tar.gz.metalink', '.temp','.test', '.tgz', '.tmp', '.txt', '.war', '.Z', '.zip','.sql',  '.tar']
+                keyList = ['install', 'INSTALL', 'index', 'INDEX', 'ezweb', 'EZWEB', 'flashfxp', 'FLASHFXP', '111', '1','upload','data','a','test']
                 if (url[:5] == 'http:'):
                     url = url[7:].strip()
                 if (url[:6] == 'https:'):
