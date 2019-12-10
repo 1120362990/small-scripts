@@ -66,7 +66,7 @@ def neirongtianjia_hou_txt(yuanwenjian):
 suffixs = ('.001','.002','.1','.2','.7z','.arj','.back','.backup','.bak','.bakup','.bas','.bz2','.c','.cab','.conf','.copia',
 '.core','.cpp','.dat','.db','.default','.dll','.doc','.gz','.ini',
 '.jar','.java','.metalink','.old','.orig','.pas','.rar','.sav','.saved','.source','.src','.stackdump','.tar','.tar.gz',
-'.tar.gz.metalink','.temp','.test','.tgz','.tmp','.txt','.war','.Z','.zip','.uue','.iso','.7-zip','.ace','.lzh','.gzip')
+'.tar.gz.metalink','.temp','.test','.tgz','.tmp','.txt','.war','.Z','.zip','.uue','.iso','.7-zip','.ace','.lzh','.gzip','.tgz','.tar.gz')
 
 
 class RedisUN(threading.Thread):
