@@ -15,11 +15,13 @@ def file_name(file_dir):
 # 合并结果
 def merge(files):
     for file in files:
+        print(file)
         with open(file, 'r', encoding = 'utf-8') as f:
             for line in f:
-                print(line.strip())
+                data = f.read()  # 读取文件
+                # print(data)
                 with open('merge_result.txt', 'a') as out_file:
-                    out_file.write(line.strip()+'\n')
+                    out_file.write(data)
 
 
 # 活动当前工作目录路径
